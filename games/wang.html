@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d1424">
+<meta name="description" content="献给王铭宇的专属小游戏。驾驶皇冠飞船，收集王、铭、宇，躲开汪、明、鱼，集齐名字触发王炸。">
+<title>王铭宇宙 · 名字保卫战</title>
+<style>
+:root{--bg:#0d1424;--panel:#151e31;--line:#2b354b;--ink:#f5f6fa;--muted:#9ba8be;--mint:#96f4ce;--gold:#ffd77e;--coral:#ff939e}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font-family:Inter,"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background-image:radial-gradient(ellipse at 15% 0%,#20354b55,transparent 50%),radial-gradient(ellipse at 95% 90%,#2c204a44,transparent 45%);min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}button:disabled{cursor:default;opacity:.5}button,canvas{-webkit-tap-highlight-color:transparent}.wrap{max-width:1220px;margin:auto;padding:42px 34px 25px}.top{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-bottom:26px}.eyebrow{color:var(--mint);font-size:12px;font-weight:700;letter-spacing:3px;margin-bottom:12px;display:flex;align-items:center;gap:9px}.dot{width:7px;height:7px;background:var(--mint);border-radius:50%;box-shadow:0 0 12px #96f4ce66}h1{font-size:52px;line-height:1.12;letter-spacing:-2px;margin:0;font-weight:900}h1 .accent{color:var(--mint)}.subtitle{color:var(--muted);margin:14px 0 0;font-size:14px;letter-spacing:.7px}.player-ticket{border:1px solid var(--line);border-radius:16px;padding:18px 23px;display:flex;align-items:center;gap:17px;transform:rotate(2deg);background:#192238;min-width:224px}.avatar{width:44px;height:44px;border-radius:12px;background:var(--gold);color:#31291b;display:grid;place-items:center;font-size:24px;font-weight:900}.ticket-label{font-size:10px;letter-spacing:2px;color:var(--muted);margin-bottom:5px}.ticket-name{font-size:20px;font-weight:800}.layout{display:grid;grid-template-columns:minmax(0,1fr) 276px;gap:20px;align-items:start}.game-shell{border:1px solid #364159;border-radius:20px;overflow:hidden;background:#111b2d;box-shadow:0 18px 60px #0002}.hud{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 22px;border-bottom:1px solid var(--line)}.stat-label{font-size:10px;color:var(--muted);letter-spacing:1.5px;margin-bottom:6px}.stat-value{font-size:23px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}.score{color:var(--gold)}.hearts{color:var(--coral);font-size:19px;letter-spacing:3px}.hud-controls{display:flex;gap:6px}.icon-btn{width:36px;height:36px;border:1px solid #33415b;border-radius:10px;display:grid;place-items:center;background:#1b2740;color:var(--muted);font-size:15px}.icon-btn:hover{border-color:var(--mint);color:var(--mint)}.icon-btn svg{width:18px;height:18px}.arena{position:relative;aspect-ratio:3/2;overflow:hidden;background:#0b1221;isolation:isolate}canvas{display:block;width:100%;height:100%;touch-action:none;outline:none}.overlay{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:24px;background:linear-gradient(90deg,#0b122188,#0b1221ba,#0b122188);text-align:center;z-index:3}.overlay.hidden{display:none}.mission-tag{font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:13px}.overlay h2{font-size:clamp(24px,3vw,36px);font-weight:900;margin:0 0 13px;letter-spacing:-1px}.overlay p{font-size:13px;line-height:1.9;color:#bac7dc;max-width:350px;margin:0 0 21px}.intro-crown{color:var(--gold);margin-bottom:20px;width:64px;height:64px;transform:rotate(-8deg);filter:drop-shadow(0 4px 16px #ffd77e33)}.primary{border:0;border-radius:12px;padding:15px 32px;background:var(--mint);color:#173c32;font-size:15px;font-weight:900;min-width:185px;box-shadow:0 5px 0 #40745f;transition:transform .15s,background .15s}.primary:hover{background:#bbffdf;transform:translateY(-2px)}.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #40745f}.intro-note{font-size:11px;color:var(--muted);margin-top:18px}.footer-bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 20px;color:var(--muted);font-size:11px;background:#141f32}kbd{font:inherit;background:#26334c;border:1px solid #3c4962;padding:3px 6px;border-radius:5px;color:#d5dceb;white-space:nowrap}.desktop-controls{display:flex;gap:10px;align-items:center}.drag-label{color:#ced8ea}.aside{display:flex;flex-direction:column;gap:16px}.side-card{padding:23px 21px;border:1px solid var(--line);border-radius:18px;background:#172035}.card-kicker{font-size:10px;color:var(--muted);letter-spacing:1.8px}.side-card h3{font-size:17px;margin:10px 0 15px;letter-spacing:.3px}.name-track{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-bottom:13px}.letter{display:grid;place-items:center;position:relative;width:60px;height:65px;border-radius:12px;border:1px solid #35445c;color:#738199;font-size:28px;font-weight:900;background:#1a2840;transition:.25s}.letter.active{border:1px solid var(--gold);color:var(--gold);background:#ffd77e13;box-shadow:0 0 15px #ffd77e0b}.letter.done{border-color:var(--mint);color:#163a32;background:var(--mint)}.letter.done:after{content:'✓';position:absolute;bottom:2px;right:6px;font-size:10px}.track-desc{font-size:12px;line-height:1.75;color:var(--muted);margin:0}.track-desc b{color:var(--gold)}.progress{margin:15px 0 12px;display:flex;align-items:center;gap:10px}.progress-line{flex:1;height:4px;background:#2d3950;border-radius:10px;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--mint);border-radius:10px;transition:width .2s}.progress-num{font-size:10px;color:var(--mint);font-variant-numeric:tabular-nums}.blast-button{width:100%;margin-top:16px;padding:11px;border:1px solid #47685f;color:var(--mint);background:#96f4ce0b;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;font-weight:700}.blast-button:enabled:hover{background:#96f4ce22}.side-card.muted{background:transparent}.enemy-demo{display:flex;gap:9px;margin:14px 0}.enemy-char{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;background:#ff939e13;border:1px solid #ff939e55;color:var(--coral);font-size:17px;font-weight:800}.detail{font-size:12px;line-height:1.9;color:var(--muted);margin:0}.detail strong{font-weight:500;color:var(--coral)}.best-row{margin-top:16px;padding-top:16px;border-top:1px dashed #344058;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted)}.best-row b{color:var(--gold);font-size:17px;font-variant-numeric:tabular-nums}.bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:24px;color:#6f7e98;font-size:11px}.name-key{display:flex;gap:24px}.name-key b{font-weight:700;color:#b8c6da;margin-right:6px}.toast{position:absolute;left:50%;top:17px;transform:translateX(-50%) translateY(-10px);padding:9px 16px;border:1px solid #96f4ce66;border-radius:50px;background:#172e2bee;color:var(--mint);font-size:12px;white-space:nowrap;opacity:0;transition:opacity .2s,transform .2s;z-index:2;pointer-events:none}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.result-score{color:var(--gold);font-size:56px;line-height:1;font-weight:900;font-variant-numeric:tabular-nums;margin:4px 0 14px}.result-detail{color:var(--muted);font-size:12px;margin-bottom:24px}.new-best{color:var(--mint);font-size:11px;margin-bottom:14px}.pause-help{margin-top:22px;color:var(--muted);font-size:11px}.mobile-controls{display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1500px){.wrap{padding-top:65px}}
+@media(max-width:1000px){.wrap{padding:30px 24px}.layout{grid-template-columns:minmax(0,1fr) 240px;gap:14px}.side-card{padding:20px 17px}.letter{width:55px;height:60px}.desktop-controls .drag-label{display:none}.hud{padding:16px}.footer-bar{padding:14px}h1{font-size:45px}}
+@media(max-width:760px){.wrap{padding:24px 16px 22px}.top{margin-bottom:22px;gap:10px}h1{font-size:37px;letter-spacing:-1px}.eyebrow{font-size:9px;letter-spacing:2px}.subtitle{font-size:11px;letter-spacing:0;margin-top:10px}.player-ticket{min-width:auto;padding:10px;gap:8px;border-radius:12px}.avatar{width:29px;height:33px;font-size:19px;border-radius:7px}.ticket-label{font-size:8px;letter-spacing:1px}.ticket-name{font-size:14px}.layout{display:flex;flex-direction:column;gap:13px}.game-shell{width:100%;border-radius:16px}.arena{aspect-ratio:4/5}canvas{object-fit:fill}.hud{padding:13px 14px;gap:6px}.stat-value{font-size:20px}.stat-label{font-size:8px;letter-spacing:1px}.hearts{font-size:16px;letter-spacing:1px}.icon-btn{height:32px;width:32px}.aside{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:10px}.side-card{padding:15px 13px;border-radius:14px}.side-card h3{font-size:14px;margin:8px 0 12px}.letter{font-size:22px;width:100%;height:47px;border-radius:9px}.track-desc,.detail{font-size:10px}.card-kicker{font-size:8px;letter-spacing:1px}.enemy-demo{margin:10px 0}.enemy-char{width:30px;height:30px;font-size:15px}.blast-button{font-size:11px;padding:10px;margin-top:10px}.blast-button kbd{display:none}.best-row{margin-top:12px;padding-top:12px;font-size:9px}.best-row b{font-size:15px}.footer-bar{padding:11px 13px;align-items:center}.desktop-controls{display:none}.mobile-controls{display:block}.bottom{margin-top:20px;font-size:9px;align-items:flex-start}.name-key{gap:10px;flex-wrap:wrap}.bottom>span{max-width:120px;text-align:right;line-height:1.6}.overlay{padding:18px}.overlay h2{font-size:27px}.overlay p{font-size:12px;max-width:270px}.intro-crown{margin-bottom:18px}.toast{font-size:11px;max-width:90%;overflow:hidden;text-overflow:ellipsis}.progress{margin:10px 0}.intro-note{font-size:10px}.progress-num{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.player-ticket{transform:none}}
+.mobile-dash{display:none;position:absolute;right:15px;bottom:17px;z-index:2;border:1px solid #b3ffde;border-radius:13px;background:#96f4ce;color:#173c32;padding:12px 16px;font-size:12px;font-weight:900;box-shadow:0 3px 0 #40745f;visibility:hidden;touch-action:manipulation}.mobile-dash.live{visibility:visible}.mobile-dash:disabled{background:#1b2c37;color:#a7c8be;border-color:#3f685b;opacity:.85;box-shadow:none}@media(max-width:760px){.mobile-dash{display:block}}
+.board-player-bar{display:flex;align-items:center;gap:14px;border:1px solid var(--line);background:var(--panel);padding:14px 18px;border-radius:14px;margin:0 0 18px;flex-wrap:wrap}.board-player-bar label{font-size:12px;font-weight:800;color:var(--ink)}.board-player-bar input{width:175px;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px 12px;border-radius:9px;font:inherit;font-size:13px}.board-player-bar input:focus-visible{outline:2px solid var(--mint);outline-offset:2px}.board-player-bar input[aria-invalid=true]{border-color:var(--coral)}.board-player-bar input:disabled{opacity:.7}.board-player-bar small{color:var(--muted);font-size:11px;line-height:1.5}.board-local-tag{margin-left:auto;font-size:10px;color:var(--mint);letter-spacing:1px;border:1px solid var(--line);border-radius:20px;padding:6px 10px;white-space:nowrap}.leaderboard{margin-top:24px;border:1px solid var(--line);border-radius:20px;padding:24px;background:var(--panel);scroll-margin-top:20px}.board-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.board-heading h2{margin:7px 0 0;font-size:23px;letter-spacing:-.5px}.board-tabs{display:flex;gap:6px;padding:4px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}.board-tabs button{padding:9px 17px;border:0;border-radius:8px;font-size:12px;background:transparent;color:var(--muted);font-weight:700}.board-tabs button[aria-pressed=true]{background:var(--mint);color:var(--bg)}.board-rule{font-size:12px;color:var(--muted);margin:15px 0 19px;line-height:1.7}.board-podium{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;list-style:none;margin:0;padding:0}.board-podium li{border:1px solid var(--line);border-radius:14px;padding:19px 20px;background:var(--bg);min-width:0;position:relative}.board-podium li:first-child{border-color:var(--gold);background:linear-gradient(125deg,color-mix(in srgb,var(--gold) 10%,var(--bg)),var(--bg))}.board-place{display:block;font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px}.board-podium li:first-child .board-place{color:var(--gold)}.board-name{display:block;font-size:19px;line-height:1.5;overflow-wrap:anywhere;font-weight:800}.board-score{display:block;font-size:28px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums;margin:8px 0 7px}.board-time{display:block;font-size:11px;color:var(--muted);line-height:1.6}.board-empty .board-name{font-size:15px;color:var(--muted);font-weight:500}.board-me:after{content:'YOU';position:absolute;right:14px;top:17px;font-size:9px;color:var(--mint);letter-spacing:1px}.board-foot{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap;margin-top:17px;font-size:11px;color:var(--muted);line-height:1.7}.board-personal{color:var(--mint);font-weight:700}.board-storage{font-size:10px;color:var(--muted);margin:9px 0 0;line-height:1.6}.board-result{font-size:11px;line-height:1.6;color:var(--mint);max-width:340px;margin:0 0 12px}.board-actions{display:flex;gap:20px;margin-top:17px}.board-link{border:0;background:transparent;color:var(--muted);font-size:11px;padding:4px}.board-link:hover{color:var(--mint)}
+@media(max-width:760px){.board-player-bar{gap:9px;padding:12px 13px;margin-bottom:13px}.board-player-bar input{flex:1;width:120px}.board-player-bar small{order:3;width:100%;font-size:10px}.board-local-tag{font-size:9px;padding:6px 8px}.leaderboard{padding:17px 14px;margin-top:17px;border-radius:16px}.board-heading{gap:13px}.board-heading h2{font-size:20px}.board-tabs button{font-size:11px;padding:8px 13px}.board-podium{grid-template-columns:1fr;gap:9px}.board-podium li{padding:13px 16px;display:grid;grid-template-columns:52px minmax(0,1fr) auto;column-gap:12px;align-items:center}.board-place{grid-column:1;grid-row:1/3;margin:0;letter-spacing:0}.board-name{grid-column:2;grid-row:1;font-size:16px}.board-score{grid-column:3;grid-row:1/3;font-size:23px;margin:0;white-space:nowrap}.board-time{grid-column:2;grid-row:2;font-size:10px}.board-empty .board-name{font-size:13px}.board-me:after{display:none}.board-rule{font-size:10px;margin:12px 0 14px}.board-foot{gap:5px;font-size:10px}.board-storage{font-size:9px}.board-actions{margin-top:10px;gap:17px}.board-result{font-size:10px;max-width:270px;margin-bottom:10px}#result .result-score{font-size:46px;margin-bottom:8px}#result .new-best{margin-bottom:9px}#result p{margin-bottom:10px}#result .result-detail{margin-bottom:10px}#result h2{font-size:23px}}
+.board-local-tag{text-decoration:none}.board-local-tag:hover{border-color:var(--mint)}
+
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div><div class="eyebrow"><span class="dot"></span>为王铭宇定制的宇宙任务</div><h1>王铭<span class="accent">宇宙</span><span style="color:var(--gold);font-size:.7em"> ✦</span></h1><p class="subtitle">宇宙那么大，名字不能丢。</p></div>
+    <div class="player-ticket"><div class="avatar">王</div><div><div class="ticket-label">PLAYER 001</div><div class="ticket-name">王铭宇</div></div></div>
+  </header>
+<div class="board-player-bar"><label for="board-player">本局玩家</label><input id="board-player" type="text" maxlength="24" autocomplete="off" spellcheck="false" aria-describedby="board-player-note" placeholder="输入你的昵称"><small id="board-player-note">换个昵称，一起争夺前三名。每个昵称保留最佳记录。</small><a class="board-local-tag" href="#leaderboard">本地排行榜 ↓</a></div>
+  <div class="layout">
+    <section class="game-shell" aria-label="王铭宇宙游戏区">
+      <div class="hud">
+        <div><div class="stat-label">宇宙积分</div><div class="stat-value score" id="score">0000</div></div>
+        <div><div class="stat-label">剩余时间</div><div class="stat-value"><span id="timer">60</span><small style="font-size:12px;color:var(--muted)"> s</small></div></div>
+        <div><div class="stat-label">飞船护甲</div><div class="hearts" id="hearts" aria-label="3 点护甲">♥♥♥</div></div>
+        <div class="hud-controls">
+          <button class="icon-btn" id="sound" title="开启游戏声音" aria-label="开启游戏声音" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="sound-path" d="m16 9 6 6m0-6-6 6"/></svg></button>
+          <button class="icon-btn" id="pause" disabled title="暂停（P / Esc）" aria-label="暂停游戏">Ⅱ</button>
+        </div>
+      </div>
+      <div class="arena" id="arena">
+        <canvas id="game" tabindex="0" aria-label="游戏画布。使用 WASD、方向键，或鼠标和手指拖动来移动，空格冲刺。">请使用支持 Canvas 的浏览器打开游戏。</canvas>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <button class="mobile-dash" id="mobile-dash" disabled aria-label="皇冠冲刺">✧ 冲刺</button>
+        <div class="overlay" id="intro">
+          <svg class="intro-crown" viewBox="0 0 80 80" fill="none" aria-hidden="true"><path d="m13 21 17 13 10-22 10 22 17-13-6 36H19L13 21Z" fill="currentColor"/><rect x="19" y="62" width="42" height="6" rx="3" fill="currentColor"/><circle cx="40" cy="44" r="5" fill="#17253b"/><path d="M4 9v10M0 14h9M72 66v10M67 71h10" stroke="#96f4ce" stroke-width="2"/></svg>
+          <div class="mission-tag">MISSION: SAVE YOUR NAME</div>
+          <h2>请查收，你的宇宙王位。</h2>
+          <p>开着皇冠飞船，按顺序吃到 <b style="color:var(--gold)">王 → 铭 → 宇</b>。<br>集齐名字就放“王炸”，把冒牌字统统震飞！</p>
+          <button class="primary" id="start">出发，宇宙称王 ↗</button>
+          <div class="intro-note">一局 60 秒 · 三格护甲 · 手机也能玩</div>
+        </div>
+        <div class="overlay hidden" id="paused"><div class="mission-tag">TAKE A COSMIC BREAK</div><h2>宇宙先等你一下。</h2><p>名字和王位都帮你留着。</p><button class="primary" id="resume">继续飞行 →</button><div class="pause-help">按 P 或 Esc 也可以继续</div></div>
+        <div class="overlay hidden" id="result"><div class="mission-tag" id="result-tag">MISSION COMPLETE</div><h2 id="rank">王铭宇本人认证</h2><div class="result-score" id="result-score">0</div><div class="new-best" id="new-best"></div><p id="result-line"></p><div class="result-detail" id="result-detail"></div><div class="board-result" id="board-receipt" role="status"></div><button class="primary" id="restart">再飞一局 ↗</button><div class="board-actions"><button id="board-view" class="board-link">查看排行榜 ↓</button><button id="board-change" class="board-link">换个人挑战 ↗</button></div></div>
+      </div>
+      <div class="footer-bar"><div class="desktop-controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 移动</span><span><kbd>空格</kbd> 冲刺</span><span class="drag-label">或拖动飞船</span></div><div class="mobile-controls">☝ 拖动屏幕移动 · 点右下按钮冲刺</div><span id="flight-status">等待船长登舰</span></div>
+    </section>
+    <aside class="aside">
+      <section class="side-card"><div class="card-kicker">YOUR NAME, YOUR SUPERPOWER</div><h3>名字集齐，王炸出击。</h3><div class="name-track"><span class="letter active" id="letter0">王</span><span class="letter" id="letter1">铭</span><span class="letter" id="letter2">宇</span></div><p class="track-desc" id="target-text">下一站：<b>王</b>。<br>找带光圈的金色字。</p><div class="progress"><div class="progress-line"><div class="progress-fill" id="round-progress"></div></div><span class="progress-num" id="combo-label">0 次王炸</span></div><button class="blast-button" id="dash" disabled>✧ 皇冠冲刺 <kbd>SPACE</kbd></button></section>
+      <section class="side-card muted"><div class="card-kicker">BEWARE OF IMPOSTORS</div><h3>是王铭宇，不是汪明鱼。</h3><div class="enemy-demo" aria-label="要躲开的冒牌字：汪、明、鱼"><span class="enemy-char">汪</span><span class="enemy-char">明</span><span class="enemy-char">鱼</span></div><p class="detail">碰到<strong>红色冒牌字</strong>会掉护甲。<br>冲刺时无敌，集齐名字还能<br>清场并修复一格护甲。</p><div class="best-row"><span>本机宇宙纪录</span><b id="best">0</b></div></section>
+    </aside>
+  </div>
+  <section class="leaderboard" id="leaderboard" aria-labelledby="board-title"><div class="board-heading"><div><div class="card-kicker">EVERY NAME HAS A PLACE</div><h2 id="board-title">谁是今天的 Number One？</h2></div><div class="board-tabs" role="group" aria-label="排行榜排序"><button id="board-score-tab" type="button" aria-pressed="true">积分榜</button><button id="board-time-tab" type="button" aria-pressed="false">速度榜</button></div></div><p class="board-rule" id="board-rule"></p><ol class="board-podium" aria-label="前三名"><li id="board-podium-0" class="board-empty"><span class="board-place">♛ No.1</span><strong class="board-name" id="board-name-0">冠军席位等你来</strong><b class="board-score" id="board-score-0">—</b><span class="board-time" id="board-time-0">结束一局后，自动入榜</span></li><li id="board-podium-1" class="board-empty"><span class="board-place">✦ No.2</span><strong class="board-name" id="board-name-1">亚军席位等你来</strong><b class="board-score" id="board-score-1">—</b><span class="board-time" id="board-time-1">结束一局后，自动入榜</span></li><li id="board-podium-2" class="board-empty"><span class="board-place">✧ No.3</span><strong class="board-name" id="board-name-2">季军席位等你来</strong><b class="board-score" id="board-score-2">—</b><span class="board-time" id="board-time-2">结束一局后，自动入榜</span></li></ol><div class="board-foot"><span id="board-count">0 位玩家参加</span><span id="board-personal" class="board-personal"></span><span>暂停不计时 · 不同昵称分开排名</span></div><p class="board-storage" id="board-storage"></p></section>
+<footer class="bottom"><div class="name-key"><span><b>王</b>自带王者光环</span><span><b>铭</b>好名字值得铭记</span><span><b>宇</b>舞台是整个宇宙</span></div><span>献给王铭宇的一点宇宙级快乐。</span></footer>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+</main>
+<script>
+const GiftBoard = (() => {
+  'use strict';
+  const config = {"file":"王铭宇宙.html","id":"wangmingyu","owner":"王铭宇","firstMilestone":true,"timeLabel":"首次王炸","speedRule":"比谁更快打出第一次王炸，未打出王炸不参加速度榜"};
+  const $ = id => document.getElementById(id);
+  const storageKey = config.id + '-leaderboard-v1';
+  const input = $('board-player');
+  let players = [], sort = 'score', current = null, storageOK = true;
+  const cleanName = value => Array.from(String(value || '').normalize('NFKC').replace(/[\u0000-\u001f\u007f]/g, '').trim().replace(/\s+/g, ' ')).slice(0, 12).join('');
+  const identity = name => cleanName(name).toLowerCase();
+  const validRun = r => r && Number.isSafeInteger(r.score) && r.score >= 0 && r.score <= 10000000 && Number.isSafeInteger(r.elapsedMs) && r.elapsedMs >= 0 && r.elapsedMs <= 86400000 && (r.timeMs === null || Number.isSafeInteger(r.timeMs) && r.timeMs >= 0 && r.timeMs <= r.elapsedMs);
+  const speed = r => r.timeMs === null ? Infinity : r.timeMs;
+  const byScore = (a, b) => b.score - a.score || speed(a) - speed(b) || a.elapsedMs - b.elapsedMs;
+  const byTime = (a, b) => speed(a) - speed(b) || b.score - a.score;
+  function noteStorage() { $('board-storage').textContent = storageOK ? '成绩仅保存在当前浏览器；不同设备不互通。请用同一个文件继续玩。' : '浏览器未允许保存：本次排行仍可用，关闭页面后可能丢失。'; }
+  try {
+    const raw = localStorage.getItem(storageKey);
+    if (raw && raw.length < 1000000) {
+      const data = JSON.parse(raw);
+      if (Array.isArray(data)) for (const p of data.slice(0, 1000)) {
+        if (!p || typeof p.name !== 'string' || !cleanName(p.name) || !validRun(p.bestScore)) continue;
+        const name = cleanName(p.name), bestTime = validRun(p.bestTime) && p.bestTime.timeMs !== null ? p.bestTime : null;
+        const existing = players.find(x => identity(x.name) === identity(name));
+        if (existing) {
+          if (byScore(p.bestScore, existing.bestScore) < 0) existing.bestScore = p.bestScore;
+          if (bestTime && (!existing.bestTime || byTime(bestTime, existing.bestTime) < 0)) existing.bestTime = bestTime;
+        } else players.push({name, bestScore: p.bestScore, bestTime});
+      }
+    }
+    input.value = cleanName(localStorage.getItem(storageKey + '-player')) || config.owner;
+  } catch { input.value = config.owner; }
+  // Probe local storage without touching any existing scores.
+  try { localStorage.setItem(storageKey + '-probe', '1'); localStorage.removeItem(storageKey + '-probe'); } catch { storageOK = false; }
+  function persist() {
+    try { localStorage.setItem(storageKey, JSON.stringify(players)); storageOK = true; } catch { storageOK = false; }
+    noteStorage();
+  }
+  function formatTime(ms) {
+    if (ms === null) return '未完成';
+    const seconds = ms / 1000;
+    return seconds < 60 ? seconds.toFixed(1) + ' 秒' : Math.floor(seconds / 60) + ' 分 ' + (seconds % 60).toFixed(1) + ' 秒';
+  }
+  function ranked(kind = sort) {
+    return players.filter(p => kind === 'score' || p.bestTime).map(p => ({name: p.name, run: kind === 'score' ? p.bestScore : p.bestTime})).sort((a, b) => (kind === 'score' ? byScore(a.run, b.run) : byTime(a.run, b.run)) || a.name.localeCompare(b.name, 'zh-CN'));
+  }
+  function render() {
+    const list = ranked();
+    $('board-score-tab').setAttribute('aria-pressed', String(sort === 'score'));
+    $('board-time-tab').setAttribute('aria-pressed', String(sort === 'time'));
+    $('board-rule').textContent = sort === 'score' ? '每人保留最高分；同分时，完成目标更快的排前面。' : config.speedRule + '；同用时，分数更高的排前面。';
+    $('board-count').textContent = players.length + ' 位玩家参加';
+    for (let i = 0; i < 3; i++) {
+      const row = list[i];
+      $('board-name-' + i).textContent = row ? row.name : ['冠军席位等你来', '亚军席位等你来', '季军席位等你来'][i];
+      $('board-score-' + i).textContent = row ? row.run.score + ' 分' : '—';
+      $('board-time-' + i).textContent = row ? config.timeLabel + ' · ' + formatTime(row.run.timeMs) : sort === 'time' ? '完成目标后，自动入榜' : '结束一局后，自动入榜';
+      $('board-podium-' + i).classList.toggle('board-empty', !row);
+      $('board-podium-' + i).classList.toggle('board-me', !!row && identity(row.name) === identity(current?.name || input.value));
+    }
+    $('board-personal').textContent = '';
+    const name = current?.name || cleanName(input.value);
+    const mine = list.findIndex(p => identity(p.name) === identity(name));
+    if (mine >= 0) $('board-personal').textContent = name + ' · 当前' + (sort === 'score' ? '积分' : '速度') + '榜 No.' + (mine + 1);
+    else if (players.some(p => identity(p.name) === identity(name))) $('board-personal').textContent = name + ' · 完成目标后就能参加速度榜';
+  }
+  function elapsed() {
+    if (!current) return 0;
+    return current.elapsedMs + (current.active ? Math.max(0, performance.now() - current.since) : 0);
+  }
+  function setActive(active) {
+    if (!current || current.finished || current.active === active) return;
+    if (current.active) current.elapsedMs = elapsed();
+    current.active = active; current.since = performance.now();
+  }
+  function start() {
+    const name = cleanName(input.value);
+    if (!name) {
+      input.setAttribute('aria-invalid', 'true'); $('board-player-note').textContent = '先填一个昵称，再出发。'; input.focus(); return false;
+    }
+    input.value = name; input.removeAttribute('aria-invalid'); input.disabled = true;
+    current = {name, elapsedMs: 0, since: performance.now(), active: true, milestoneMs: null, finished: false};
+    try { localStorage.setItem(storageKey + '-player', name); } catch { storageOK = false; }
+    $('board-player-note').textContent = name + ' 正在挑战 · 暂停不计时';
+    $('board-receipt').textContent = '';
+    render(); noteStorage(); return true;
+  }
+  function milestone() { if (current && !current.finished && current.milestoneMs === null) current.milestoneMs = Math.round(elapsed()); }
+  function finish(score, completed) {
+    if (!current || current.finished) return;
+    setActive(false); current.finished = true; input.disabled = false;
+    const elapsedMs = Math.min(86400000, Math.round(elapsed()));
+    const targetMs = config.firstMilestone ? current.milestoneMs : completed ? elapsedMs : null;
+    const timeMs = targetMs === null ? null : Math.min(elapsedMs, targetMs);
+    const run = {score: Math.max(0, Math.round(score)), elapsedMs, timeMs};
+    let person = players.find(p => identity(p.name) === identity(current.name));
+    if (!person) { person = {name: current.name, bestScore: run, bestTime: timeMs === null ? null : run}; players.push(person); }
+    else {
+      if (byScore(run, person.bestScore) < 0) person.bestScore = run;
+      if (timeMs !== null && (!person.bestTime || byTime(run, person.bestTime) < 0)) person.bestTime = run;
+    }
+    persist(); render();
+    const place = ranked('score').findIndex(p => identity(p.name) === identity(current.name)) + 1;
+    $('board-receipt').textContent = current.name + ' · 积分榜 No.' + place + ' · ' + config.timeLabel + ' ' + formatTime(timeMs);
+    $('board-player-note').textContent = '已记录成绩。换个昵称，下一位也来挑战！';
+  }
+  input.addEventListener('input', () => { input.removeAttribute('aria-invalid'); $('board-player-note').textContent = '不同昵称分开排行，同昵称保留最佳成绩。'; if (current?.finished) current = null; render(); });
+  $('board-score-tab').addEventListener('click', () => { sort = 'score'; render(); });
+  $('board-time-tab').addEventListener('click', () => { sort = 'time'; render(); });
+  $('board-view').addEventListener('click', () => { $('leaderboard').scrollIntoView({behavior: 'smooth', block: 'start'}); $('board-score-tab').focus({preventScroll: true}); });
+  $('board-change').addEventListener('click', () => { input.disabled = false; input.scrollIntoView({behavior: 'smooth', block: 'center'}); input.focus({preventScroll: true}); input.select(); });
+  noteStorage(); render();
+  return {start, setActive, milestone, finish};
+})();
+
+
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const canvas=$('game'), ctx=canvas.getContext('2d'), arena=$('arena');
+  const NAME=['王','铭','宇'], FAKE=['汪','明','鱼'];
+  const COLOR={mint:'#96f4ce',gold:'#ffd77e',red:'#ff939e'};
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=960,H=640,dpr=1,mode='intro',elapsed=0,score=0,lives=3,step=0,combos=0,peak=0;
+  let ship={x:480,y:430,vx:0,vy:0,angle:0,inv:0,dash:0,cooldown:0},tokens=[],enemies=[],particles=[],labels=[],rings=[];
+  let last=0,backgroundTime=0,spawnClock=0,toastClock=0,keyboard=new Set(),pointer=null,dragging=false;
+  let soundOn=false,audio=null,best=0,shake=0,comboFlash=0;
+  try { best=Number(localStorage.getItem('wangmingyu-best-v1'))||0; } catch {}
+  $('best').textContent=best;
+  const rand=(a,b)=>a+Math.random()*(b-a),dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  const stars=Array.from({length:100},()=>({x:Math.random(),y:Math.random(),r:rand(.5,1.8),phase:rand(0,6.3)}));
+  function resize(){const r=arena.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);const newH=960*r.height/r.width;if(Math.abs(newH-H)>1){const ratio=newH/H;ship.y*=ratio;tokens.forEach(t=>t.y*=ratio);enemies.forEach(e=>e.y*=ratio);H=newH;} }
+  new ResizeObserver(resize).observe(arena);resize();
+  function beep(freq=440,duration=.08,type='sine',volume=.035){if(!soundOn)return;try{audio??=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
+  function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');toastClock=2.2;}
+  function hud(){ $('score').textContent=String(score).padStart(4,'0');$('timer').textContent=Math.max(0,Math.ceil(60-elapsed));$('timer').style.color=elapsed>50?COLOR.red:'';$('hearts').textContent='♥'.repeat(lives)+'♡'.repeat(3-lives);$('hearts').setAttribute('aria-label',`${lives} 点护甲`);for(let i=0;i<3;i++)$('letter'+i).className='letter'+(i<step?' done':i===step?' active':'');$('target-text').innerHTML=`下一站：<b>${NAME[step]}</b>。<br>找带光圈的金色字。`;$('round-progress').style.width=(step/3*100)+'%';$('combo-label').textContent=combos+' 次王炸';$('dash').disabled=mode!=='playing'||ship.cooldown>0;$('dash').innerHTML=ship.cooldown>0?`✧ 充能中 ${ship.cooldown.toFixed(1)} s`:'✧ 皇冠冲刺 <kbd>SPACE</kbd>';$('mobile-dash').classList.toggle('live',mode==='playing');$('mobile-dash').disabled=mode!=='playing'||ship.cooldown>0;$('mobile-dash').textContent=ship.cooldown>0?`充能 ${ship.cooldown.toFixed(1)}s`:'✧ 冲刺';$('flight-status').textContent=mode==='playing'?(ship.dash>0?'皇冠冲刺，免疫碰撞':combos>0?'宇宙已记住你的名字':'名字保卫战进行中'):mode==='paused'?'飞船已悬停':mode==='ended'?'欢迎再次出征':'等待船长登舰'; }
+  function safePoint(){for(let i=0;i<80;i++){const p={x:rand(65,W-65),y:rand(85,H-75)};if(dist(p,ship)>120&&tokens.every(t=>dist(p,t)>135)&&enemies.every(e=>dist(p,e)>100))return p;}return {x:rand(65,W-65),y:rand(85,H-75)};}
+  function makeTokens(){tokens=[];for(let i=0;i<3;i++){const p=safePoint();tokens.push({...p,index:i,phase:rand(0,6),reject:0});}}
+  function start(){if(!GiftBoard.start())return;mode='playing';elapsed=score=step=combos=spawnClock=shake=comboFlash=0;lives=3;ship={x:W/2,y:H*.66,vx:0,vy:0,angle:0,inv:1.3,dash:0,cooldown:0};enemies=[];particles=[];labels=[];rings=[];keyboard.clear();pointer=null;dragging=false;makeTokens();['intro','result','paused'].forEach(id=>$(id).classList.add('hidden'));$('pause').disabled=false;$('pause').textContent='Ⅱ';canvas.focus({preventScroll:true});toast('船长王铭宇，先去找「王」！');beep(523,.12);hud();last=performance.now();}
+  function togglePause(){if(mode!=='playing'&&mode!=='paused')return;mode=mode==='playing'?'paused':'playing';GiftBoard.setActive(mode==='playing');$('paused').classList.toggle('hidden',mode!=='paused');$('pause').textContent=mode==='paused'?'▶':'Ⅱ';$('pause').setAttribute('aria-label',mode==='paused'?'继续游戏':'暂停游戏');pointer=null;dragging=false;keyboard.clear();hud();if(mode==='playing')canvas.focus({preventScroll:true});else $('resume').focus({preventScroll:true});}
+  function finish(){if(mode!=='playing')return;mode='ended';GiftBoard.finish(score,combos>0);pointer=null;dragging=false;keyboard.clear();const record=score>best;if(record){best=score;try{localStorage.setItem('wangmingyu-best-v1',String(best));}catch{}}$('best').textContent=best;$('result-score').textContent=score;$('result-detail').textContent=`${combos} 次王炸 · 飞行 ${Math.min(60,Math.floor(elapsed))} 秒`;$('new-best').textContent=record?'✦ 创下新的个人宇宙纪录！':'';const ranks=combos>=6?['宇宙级王铭宇','全宇宙都记住了你的名字。连黑洞都让你先走。']:combos>=3?['王铭宇，宇宙有你的位置。','名字一亮，冒牌字退场。这个王位你坐得很稳。']:combos>=1?['王铭宇本人，认证成功。','一记王炸，正式向宇宙介绍自己。']:['王位已预留，下局来坐。','宇宙还没记住？没关系，再介绍自己一次。'];$('rank').textContent=ranks[0];$('result-line').textContent=ranks[1];$('result-tag').textContent=lives>0?'MISSION COMPLETE':'SHIP NEEDS A BREAK';$('result').classList.remove('hidden');$('pause').disabled=true;$('announcer').textContent=`游戏结束，得分 ${score}，${combos} 次王炸。`;hud();beep(lives>0?784:220,.3);$('restart').focus({preventScroll:true});}
+  function burst(x,y,color,count=20){if(reduced)count=Math.min(count,7);for(let i=0;i<count;i++){const a=rand(0,Math.PI*2),s=rand(35,200);particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:rand(.3,.9),max:1,color,r:rand(2,5)});}}
+  function floating(text,x,y,color){labels.push({text,x,y,life:1.25,color});}
+  function nameBlast(){GiftBoard.milestone();combos++;peak=Math.max(peak,combos);score+=250+enemies.length*15;const oldLives=lives;lives=Math.min(3,lives+1);enemies.forEach(e=>burst(e.x,e.y,COLOR.red,12));enemies=[];rings.push({x:ship.x,y:ship.y,r:0,life:1,color:COLOR.mint});burst(ship.x,ship.y,COLOR.gold,45);floating('王 炸！ +250',ship.x,ship.y-65,COLOR.gold);comboFlash=.65;shake=reduced?0:.35;ship.inv=1.8;step=0;makeTokens();const lines=['报名字就能清场？王铭宇：能。','汪明鱼已下线，王铭宇上线。','宇宙很大，王铭宇最大。','铭刻成功！这片宇宙姓王。'];toast(lines[(combos-1)%lines.length]+(lives>oldLives?' 护甲 +1':''));[523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.18,'triangle'),i*75));}
+  function dash(){if(mode!=='playing'||ship.cooldown>0)return;ship.dash=.32;ship.cooldown=3;ship.inv=Math.max(ship.inv,.43);if(Math.hypot(ship.vx,ship.vy)<10){if(pointer){const dx=pointer.x-ship.x,dy=pointer.y-ship.y,d=Math.hypot(dx,dy)||1;ship.vx=dx/d*310;ship.vy=dy/d*310;}else{ship.vx=Math.sin(ship.angle)*310;ship.vy=-Math.cos(ship.angle)*310;}}rings.push({x:ship.x,y:ship.y,r:20,life:.35,color:COLOR.mint});beep(880,.08,'sawtooth',.02);hud();}
+  function spawn(){const edge=Math.floor(rand(0,4));let x,y;if(edge===0){x=-35;y=rand(50,H-50);}else if(edge===1){x=W+35;y=rand(50,H-50);}else if(edge===2){x=rand(20,W-20);y=-35;}else{x=rand(20,W-20);y=H+35;}let target={x:rand(W*.2,W*.8),y:rand(H*.2,H*.8)};if(elapsed>12&&Math.random()<.3)target={x:ship.x,y:ship.y};const a=Math.atan2(target.y-y,target.x-x),speed=rand(70,115)+elapsed*1.6;enemies.push({x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,r:rand(22,29),char:FAKE[Math.floor(rand(0,3))],spin:rand(-.5,.5),angle:rand(-.3,.3),life:0});}
+  function update(dt){elapsed+=dt;if(elapsed>=60){finish();return;}ship.inv=Math.max(0,ship.inv-dt);ship.cooldown=Math.max(0,ship.cooldown-dt);ship.dash=Math.max(0,ship.dash-dt);shake=Math.max(0,shake-dt);comboFlash=Math.max(0,comboFlash-dt);let mx=0,my=0;if(keyboard.has('arrowleft')||keyboard.has('a'))mx--;if(keyboard.has('arrowright')||keyboard.has('d'))mx++;if(keyboard.has('arrowup')||keyboard.has('w'))my--;if(keyboard.has('arrowdown')||keyboard.has('s'))my++;if(mx||my){pointer=null;const d=Math.hypot(mx,my);mx/=d;my/=d;}else if(pointer){const dx=pointer.x-ship.x,dy=pointer.y-ship.y,d=Math.hypot(dx,dy);if(d>6){const m=Math.min(1,d/65);mx=dx/d*m;my=dy/d*m;}}
+    const speed=H>900?420:325;if(ship.dash<=0){const smoothing=1-Math.exp(-dt*17);ship.vx+=(mx*speed-ship.vx)*smoothing;ship.vy+=(my*speed-ship.vy)*smoothing;}ship.x+=ship.vx*dt*(ship.dash>0?2.5:1);ship.y+=ship.vy*dt*(ship.dash>0?2.5:1);ship.x=Math.max(25,Math.min(W-25,ship.x));ship.y=Math.max(30,Math.min(H-30,ship.y));if(Math.hypot(ship.vx,ship.vy)>25)ship.angle=Math.atan2(ship.vx,-ship.vy);
+    if(!reduced&&Math.random()<.7){const a=ship.angle;particles.push({x:ship.x-Math.sin(a)*21,y:ship.y+Math.cos(a)*21,vx:rand(-15,15)-ship.vx*.15,vy:rand(-15,15)-ship.vy*.15,life:.25,max:.35,color:ship.dash>0?COLOR.mint:COLOR.gold,r:ship.dash>0?4:2});}
+    spawnClock+=dt;const spawnRate=Math.max(.72,1.75-elapsed*.015);if(spawnClock>spawnRate){spawnClock=0;if(enemies.length<24)spawn();}
+    for(const t of [...tokens]){t.reject=Math.max(0,t.reject-dt);if(dist(ship,t)<45){if(t.index===step){score+=50;burst(t.x,t.y,COLOR.gold,18);floating('+50',t.x,t.y-30,COLOR.gold);tokens=tokens.filter(p=>p!==t);step++;beep(523+step*120,.12,'triangle');if(step===3){nameBlast();break;}toast(step===1?'王者到位！接下来找「铭」。':'名字就差一笔，去找「宇」！');}else if(t.reject<=0){t.reject=1.5;floating('先找「'+NAME[step]+'」',t.x,t.y-35,'#bac7dc');}}}
+    for(const e of [...enemies]){e.x+=e.vx*dt;e.y+=e.vy*dt;e.angle+=e.spin*dt;e.life+=dt;if(e.life>20||e.x< -90||e.x>W+90||e.y< -90||e.y>H+90){enemies=enemies.filter(p=>p!==e);continue;}if(dist(ship,e)<e.r+18){if(ship.dash>0){score+=20;burst(e.x,e.y,COLOR.red,14);floating('+20',e.x,e.y-25,COLOR.mint);enemies=enemies.filter(p=>p!==e);beep(330,.05);}else if(ship.inv<=0){lives--;ship.inv=2;shake=reduced?0:.25;burst(e.x,e.y,COLOR.red,16);enemies=enemies.filter(p=>p!==e);floating('护甲 −1',ship.x,ship.y-45,COLOR.red);toast(lives>0?'冒牌字蹭掉一格护甲。集齐名字就能修复！':'飞船累了，名字下局再守护。');beep(130,.18,'sawtooth',.035);if(lives<=0){finish();return;}}}}
+    hud();
+  }
+  function roundRect(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1.5;ctx.stroke();}}
+  function drawBackground(t){ctx.fillStyle='#0b1323';ctx.fillRect(0,0,W,H);const g=ctx.createRadialGradient(W*.15,H*.2,0,W*.15,H*.2,W*.7);g.addColorStop(0,'#16384a55');g.addColorStop(1,'#0b132300');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);const g2=ctx.createRadialGradient(W*.9,H*.9,0,W*.9,H*.9,W*.5);g2.addColorStop(0,'#36295044');g2.addColorStop(1,'#0b132300');ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);ctx.lineWidth=1;ctx.strokeStyle='#20304640';for(let x=0;x<W;x+=64){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}for(let y=0;y<H;y+=64){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}stars.forEach(s=>{ctx.globalAlpha=reduced?.6:.35+.3*Math.sin(t*.5+s.phase);ctx.fillStyle='#c6dcf4';ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,7);ctx.fill();});ctx.globalAlpha=1;
+    ctx.save();ctx.translate(W*.88,H*.19);ctx.rotate(-.45);ctx.strokeStyle='#42547644';ctx.lineWidth=1.8;ctx.beginPath();ctx.ellipse(0,0,80,23,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#25334b';ctx.beginPath();ctx.arc(0,0,39,0,7);ctx.fill();ctx.strokeStyle='#8293b922';ctx.beginPath();ctx.arc(0,0,39,0,7);ctx.stroke();ctx.beginPath();ctx.ellipse(0,0,80,23,0,0,Math.PI);ctx.strokeStyle='#61739955';ctx.stroke();ctx.restore();ctx.fillStyle='#31445b';ctx.beginPath();ctx.arc(W*.1,H*.79,15,0,7);ctx.fill();ctx.strokeStyle='#617b9333';ctx.beginPath();ctx.arc(W*.1,H*.79,25,0,7);ctx.stroke();ctx.font='10px "Microsoft YaHei",sans-serif';ctx.fillStyle='#667b9944';ctx.fillText('WANG · MING · YU',28,H-23);
+  }
+  function drawShip(x,y,angle,preview=false){ctx.save();ctx.translate(x,y);ctx.rotate(angle);if(ship.inv>0&&!preview){ctx.strokeStyle=ship.dash>0?'#96f4cecc':'#96f4ce66';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,34+(ship.dash>0?5:0),0,7);ctx.stroke();}if(!preview&&ship.inv>0&&ship.dash<=0&&Math.floor(backgroundTime*10)%2===0)ctx.globalAlpha=.55;ctx.fillStyle='#96f4ce';ctx.beginPath();ctx.moveTo(0,-26);ctx.lineTo(25,22);ctx.lineTo(0,13);ctx.lineTo(-25,22);ctx.closePath();ctx.fill();ctx.fillStyle='#163a3b';ctx.beginPath();ctx.moveTo(0,-12);ctx.lineTo(11,12);ctx.lineTo(0,8);ctx.lineTo(-11,12);ctx.closePath();ctx.fill();ctx.fillStyle=COLOR.gold;ctx.beginPath();ctx.moveTo(-15,-15);ctx.lineTo(-17,-31);ctx.lineTo(-7,-23);ctx.lineTo(0,-37);ctx.lineTo(7,-23);ctx.lineTo(17,-31);ctx.lineTo(15,-15);ctx.closePath();ctx.fill();ctx.fillStyle='#24313c';ctx.beginPath();ctx.arc(0,-23,2,0,7);ctx.fill();ctx.fillStyle='#fff1c2';roundRect(-11,-14,22,3,1,'#fff1c2');ctx.restore();}
+  function draw(t){ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.clearRect(0,0,W,H);ctx.save();if(shake>0)ctx.translate(rand(-5,5)*shake*3,rand(-5,5)*shake*3);drawBackground(t);
+    if(mode==='intro'){[{index:0,x:W*.18,y:H*.27,phase:0},{index:1,x:W*.79,y:H*.61,phase:2},{index:2,x:W*.26,y:H*.78,phase:4}].forEach(tk=>drawToken(tk,t,true));drawShip(W*.78,H*.30,-.55,true);drawEnemy({x:W*.12,y:H*.51,r:24,char:'汪',angle:.2});drawEnemy({x:W*.86,y:H*.84,r:26,char:'鱼',angle:-.2});}else{tokens.forEach(tk=>drawToken(tk,t,false));enemies.forEach(drawEnemy);drawShip(ship.x,ship.y,ship.angle);}
+    particles.forEach(p=>{ctx.globalAlpha=Math.max(0,Math.min(1,p.life/p.max));ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill();});ctx.globalAlpha=1;rings.forEach(r=>{ctx.globalAlpha=r.life;ctx.lineWidth=3;ctx.strokeStyle=r.color;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,7);ctx.stroke();});ctx.globalAlpha=1;labels.forEach(l=>{ctx.globalAlpha=Math.min(1,l.life*2);ctx.fillStyle=l.color;ctx.font='bold 22px "Microsoft YaHei",sans-serif';ctx.textAlign='center';ctx.fillText(l.text,l.x,l.y);});ctx.globalAlpha=1;ctx.textAlign='left';if(comboFlash>0){ctx.fillStyle=`rgba(150,244,206,${comboFlash*.14})`;ctx.fillRect(0,0,W,H);}ctx.restore();}
+  function drawToken(tk,t,preview){const active=preview||tk.index===step;ctx.save();ctx.translate(tk.x,tk.y+(reduced?0:Math.sin(t*2+tk.phase)*4));const s=active?1: .85;ctx.scale(s,s);if(active){ctx.strokeStyle='#ffd77e44';ctx.lineWidth=1;ctx.beginPath();ctx.arc(0,0,39+(reduced?0:Math.sin(t*3)*3),0,7);ctx.stroke();ctx.save();ctx.rotate(reduced?0:t*.7);ctx.strokeStyle='#ffd77e99';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,44,0,.8);ctx.arc(0,0,44,Math.PI,Math.PI+.8);ctx.stroke();ctx.restore();}roundRect(-27,-29,54,58,14,active?'#463d29':'#182d35',active?'#ffd77e':'#96f4ce77');ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=active?COLOR.gold:'#96f4ceaa';ctx.font='bold 31px "Microsoft YaHei",sans-serif';ctx.fillText(NAME[tk.index],0,-1);ctx.textBaseline='alphabetic';ctx.restore();}
+  function drawEnemy(e){ctx.save();ctx.translate(e.x,e.y);ctx.rotate(e.angle);ctx.beginPath();for(let i=0;i<10;i++){const a=i*Math.PI*2/10,r=e.r*(i%2===0?1: .87);const x=Math.cos(a)*r,y=Math.sin(a)*r;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.closePath();ctx.fillStyle='#362431';ctx.fill();ctx.strokeStyle='#ff939e99';ctx.lineWidth=1.5;ctx.stroke();ctx.fillStyle=COLOR.red;ctx.font=`bold ${e.r}px "Microsoft YaHei",sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(e.char,0,0);ctx.textBaseline='alphabetic';ctx.restore();}
+  function frame(now){const dt=Math.min(.035,(now-last)/1000||.016);last=now;if(mode!=='paused'){backgroundTime+=dt;if(mode==='playing')update(dt);particles.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;});particles=particles.filter(p=>p.life>0);labels.forEach(l=>{l.y-=dt*28;l.life-=dt;});labels=labels.filter(l=>l.life>0);rings.forEach(r=>{r.r+=dt*650;r.life-=dt;});rings=rings.filter(r=>r.life>0);if(toastClock>0){toastClock-=dt;if(toastClock<=0)$('toast').classList.remove('show');}}draw(backgroundTime);requestAnimationFrame(frame);}
+  function pointerPos(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*W,y:(e.clientY-r.top)/r.height*H};}
+  canvas.addEventListener('pointerdown',e=>{if(mode!=='playing')return;dragging=true;pointer=pointerPos(e);canvas.setPointerCapture(e.pointerId);canvas.focus({preventScroll:true});});
+  canvas.addEventListener('pointermove',e=>{if(dragging&&mode==='playing')pointer=pointerPos(e);});
+  function release(){dragging=false;pointer=null;}canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);
+  document.addEventListener('keydown',e=>{if(e.target?.matches?.('input,textarea,select,[contenteditable]'))return;const k=e.key.toLowerCase();const gameKey=['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d',' '].includes(k);if((mode==='playing'||mode==='paused')&&gameKey){e.preventDefault();if(mode==='playing'){keyboard.add(k);if(k===' '&&!e.repeat)dash();}}if((k==='p'||k==='escape')&&!e.repeat&&(mode==='playing'||mode==='paused')){e.preventDefault();togglePause();}});
+  document.addEventListener('keyup',e=>keyboard.delete(e.key.toLowerCase()));
+  window.addEventListener('blur',()=>{keyboard.clear();release();if(mode==='playing')togglePause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&mode==='playing')togglePause();});
+  $('start').addEventListener('click',start);$('restart').addEventListener('click',start);$('pause').addEventListener('click',togglePause);$('resume').addEventListener('click',togglePause);$('dash').addEventListener('click',()=>{dash();canvas.focus({preventScroll:true});});$('mobile-dash').addEventListener('click',()=>{dash();canvas.focus({preventScroll:true});});
+  $('sound').addEventListener('click',()=>{soundOn=!soundOn;$('sound').setAttribute('aria-pressed',String(soundOn));$('sound').setAttribute('aria-label',soundOn?'关闭游戏声音':'开启游戏声音');$('sound').title=soundOn?'关闭游戏声音':'开启游戏声音';$('sound-path').setAttribute('d',soundOn?'M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14':'m16 9 6 6m0-6-6 6');if(soundOn)beep(659,.12);});
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

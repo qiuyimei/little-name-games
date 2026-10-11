@@ -9,7 +9,7 @@
 | 王铭宇的王铭宇宙 | 驾驶皇冠飞船，收集名字，触发王炸；60 秒挑战 | [开始玩](https://qiuyimei.github.io/little-name-games/games/wang.html) |
 | 黄珊珊的珊瑚海 | 在海底收集名字，让珊瑚花园亮起来 | [开始玩](https://qiuyimei.github.io/little-name-games/games/huang.html) |
 | 赵少锴的少走弯路 | 走过三段迷宫，挑战更快的通关用时 | [开始玩](https://qiuyimei.github.io/little-name-games/games/zhao.html) |
-| 顾建泽的星河来信 | 回顾星光、建起鹊桥、润泽花海；来信、相册、音乐与吉他谱 | [打开演示版](https://qiuyimei.github.io/little-name-games/games/gu.html) |
+| 顾健泽的星河来信 | 回顾星光、建起鹊桥、润泽花海；来信、相册、音乐与吉他谱 | [打开演示版](https://qiuyimei.github.io/little-name-games/games/gu.html) |
 | 丁鑫炜的鑫火炼金局 | 节奏敲击：60 秒内敲准金矿和火焰，铸出 8 枚鑫。 | [开始玩](https://qiuyimei.github.io/little-name-games/games/ding.html) |
 | 李聿昕的聿见晨光 | 沿线绘画：沿着晨光小径，依次点亮三幅画。 | [开始玩](https://qiuyimei.github.io/little-name-games/games/li.html) |
 | 邓嘉兴的嘉兴蹦蹦乐 | 二段跳：60 秒里，收集 18 颗嘉奖星。 | [开始玩](https://qiuyimei.github.io/little-name-games/games/deng.html) |

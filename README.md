@@ -2,14 +2,16 @@
 
 把一个名字，变成一段小小的冒险。四个名字，四份可以亲手打开的小礼物。
 
+在线作品集：[打开邱益美的小游戏作品集](https://qiuyimei.github.io/little-name-games/)。点击作品封面，就能开始玩。
+
 | 作品 | 玩法 | 打开 |
 | --- | --- | --- |
-| 王铭宇的王铭宇宙 | 驾驶皇冠飞船，收集名字，触发王炸；60 秒挑战 | [开始玩](games/wang.html) |
-| 黄珊珊的珊瑚海 | 在海底收集名字，让珊瑚花园亮起来 | [开始玩](games/huang.html) |
-| 赵少锴的少走弯路 | 走过三段迷宫，挑战更快的通关用时 | [开始玩](games/zhao.html) |
-| 顾建泽的星河来信 | 回顾星光、建起鹊桥、润泽花海；来信、相册、音乐与吉他谱 | [打开演示版](games/gu.html) |
+| 王铭宇的王铭宇宙 | 驾驶皇冠飞船，收集名字，触发王炸；60 秒挑战 | [开始玩](https://qiuyimei.github.io/little-name-games/games/wang.html) |
+| 黄珊珊的珊瑚海 | 在海底收集名字，让珊瑚花园亮起来 | [开始玩](https://qiuyimei.github.io/little-name-games/games/huang.html) |
+| 赵少锴的少走弯路 | 走过三段迷宫，挑战更快的通关用时 | [开始玩](https://qiuyimei.github.io/little-name-games/games/zhao.html) |
+| 顾建泽的星河来信 | 回顾星光、建起鹊桥、润泽花海；来信、相册、音乐与吉他谱 | [打开演示版](https://qiuyimei.github.io/little-name-games/games/gu.html) |
 
-![王铭宇宙](assets/wang.jpg)
+![王铭宇的王铭宇宙](assets/wang.jpg)
 
 ## 怎样打开
 
